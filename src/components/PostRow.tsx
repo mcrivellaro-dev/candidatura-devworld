@@ -33,8 +33,8 @@ export const PostRow = ({ post, users }: Props) => {
   }
 
   return (
-    <div key={post.id} className='md:w-[48%]'>
-      <div className='flex flex-row gap-4'>
+    <div key={post.id} className='md:w-[48%] w-full'>
+      <div className='flex flex-row gap-4 w-full'>
         <div className='flex items-center justify-center pl-1.5 pt-0.5'>
           <Link className={`flex w-12.5 h-12.5 ${theme?.primaryColor ?? ""} rounded-xl justify-center items-center cursor-pointer`} to={`/post/${post.id}`}>
             <div className='text-2xl font-semibold text-white'>{getUserInitials(post.userId)}</div>
