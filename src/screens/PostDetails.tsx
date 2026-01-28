@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { fetchPostDetails } from "../api/post";
 import { fetchUsers } from "../api/user";
 import type { User } from "../interfaces/user.interface";
 import type { Post } from "../interfaces/post.interface";
 import { Header } from "../components/Header";
+import { ThemeContext } from "../context/theme-context";
 
 export const PostDetails = () => {
+  const theme = useContext(ThemeContext);
+
   let { postId } = useParams();
   const [users, setUsers] = useState<User[]>([]);
   const [post, setPost] = useState<Post | null>(null)
@@ -48,7 +51,7 @@ export const PostDetails = () => {
         <div className='w-[60%] border rounded-xl p-2 mb-4'>
           {post && <>
             <p className='text-left text-[0.75rem]'>Post pubblicato da: {getUser(post.userId)} alias
-              <Link to={`/user/${post.userId}`}><span className='text-red-600 cursor-pointer'> {getUserName(post.userId)}</span></Link></p>
+              <Link to={`/user/${post.userId}`}><span className={`${theme?.textPrimaryColor ?? "text-red-600"} cursor-pointer`}> {getUserName(post.userId)}</span></Link></p>
             <p className="text-[2rem] text-left leading-none mb-1.5">{post.title}</p>
             <p className='text-[1rem] text-left'>{post.body}</p>
             <div className='flex justify-end mt-4'>
