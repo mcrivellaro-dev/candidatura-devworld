@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { fetchUserDetails } from "../api/user";
-import type { User } from "../interfaces/user.interface";
 import { Header } from "../components/Header";
+import type { User } from "../interfaces/user.interface";
 
 export const UserDetails = () => {
   const [user, setUser] = useState<User | null>(null)
@@ -11,7 +11,7 @@ export const UserDetails = () => {
 
   useEffect(() => {
     if (userId) {
-      fetchUserDetails(parseInt(userId)).then((user: any) => {
+      fetchUserDetails(parseInt(userId)).then((user: User) => {
         setUser(user)
       })
     }
@@ -56,7 +56,7 @@ export const UserDetails = () => {
             </tbody>
           </table>
           <div className='flex justify-end mt-4'>
-            <button onClick={() => navigate(-1)}>Indietro</button>
+            <button onClick={() => navigate('/')}>Torna alla lista</button>
           </div>
         </div>
       </div>

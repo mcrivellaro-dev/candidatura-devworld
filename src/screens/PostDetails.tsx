@@ -21,7 +21,7 @@ export const PostDetails = () => {
   }
   const getUserName = (id: number) => {
     if (users.length) {
-      const user: any = users.find((user: any) => user.id === id)
+      const user: User | undefined = users.find((user: User) => user.id === id)
       if (user) {
         return user.username
       }
@@ -33,7 +33,7 @@ export const PostDetails = () => {
     fetchUsers().then(users => {
       setUsers(users)
       if (postId) {
-        fetchPostDetails(postId).then((post: any) => {
+        fetchPostDetails(postId).then((post: Post) => {
           setPost(post)
         })
       }
@@ -50,12 +50,11 @@ export const PostDetails = () => {
             <p className='text-left text-[0.75rem]'>Post pubblicato da: {getUser(post.userId)} alias
               <Link to={`/user/${post.userId}`}><span className='text-red-600 cursor-pointer'> {getUserName(post.userId)}</span></Link></p>
             <p className="text-[2rem] text-left leading-none mb-1.5">{post.title}</p>
-            <p className='text-[1rem] text-left line-clamp-2'>{post.body}</p>
+            <p className='text-[1rem] text-left'>{post.body}</p>
             <div className='flex justify-end mt-4'>
-              <button onClick={() => navigate(-1)}>Indietro</button>
+              <button onClick={() => navigate('/')}>Torna alla lista</button>
             </div>
           </>}
-
         </div>
       </div>
     </>
