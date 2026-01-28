@@ -33,8 +33,7 @@ export const PostsList = () => {
     }
   }
 
-  const handlePrimaryColorChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const color = event.target.value
+  const handlePrimaryColorChange = (color: string) => {
     theme?.setPrimaryColor(color)
     theme?.setTextPrimaryColor(color.replace('bg-', 'text-'))
   }
@@ -52,13 +51,11 @@ export const PostsList = () => {
             ))}
           </select>
         </div>
-        <div>
+        <div className="flex gap-2">
           <label htmlFor="users">Scegli colore primario:</label>
-          <select name="users" id="users" className="border rounded ml-1" onChange={handlePrimaryColorChange}>
-            <option value={'bg-red-600'}>Rosso</option>
-            <option value={'bg-blue-600'}>Blu</option>
-            <option value={'bg-green-600'}>Verde</option>
-          </select>
+          <div className="w-5 h-5 bg-red-600 cursor-pointer rounded" onClick={() => handlePrimaryColorChange('bg-red-600')}></div>
+          <div className="w-5 h-5 bg-blue-600 cursor-pointer rounded" onClick={() => handlePrimaryColorChange('bg-blue-600')}></div>
+          <div className="w-5 h-5 bg-green-600 cursor-pointer rounded" onClick={() => handlePrimaryColorChange('bg-green-600')}></div>
         </div>
       </div>
       <div className='flex flex-wrap p-2'>
