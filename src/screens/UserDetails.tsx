@@ -17,13 +17,12 @@ export const UserDetails = () => {
     }
   }, []);
 
-
   return (
     <div>
       <Header title="Dettaglio Utente" />
       <div className="flex justify-center p-2">
         <div className="flex flex-col border rounded-xl p-3 justify-start w-[50%]">
-          <table >
+          <table>
             <tbody>
               <tr>
                 <td><p className="w-0.5">Nome:</p></td>

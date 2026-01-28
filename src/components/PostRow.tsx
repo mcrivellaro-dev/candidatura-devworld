@@ -29,16 +29,16 @@ export const PostRow = ({ post, users }: Props) => {
   }
 
   return (
-    <div key={post.id} className='md:max-w-[48%]'>
-      <div className='flex flex-row gap-2'>
-        <div className='flex items-center justify-center pl-1.5'>
+    <div key={post.id} className='md:w-[48%]'>
+      <div className='flex flex-row gap-4'>
+        <div className='flex items-center justify-center pl-1.5 pt-0.5'>
           <Link className='flex w-12.5 h-12.5 bg-red-600 rounded-xl justify-center items-center cursor-pointer' to={`/post/${post.id}`}>
             <div className='text-2xl font-semibold text-white'>{getUserInitials(post.userId)}</div>
           </Link>
         </div>
         <div className="flex flex-col justify-start">
           <h3 className="text-[2rem] text-left leading-none mb-1.5 line-clamp-1" key={post.id}>{post.title}</h3>
-          <p className='text-[1rem] text-left line-clamp-2'>{post.body}</p>
+          {/* <p className='text-[1rem] text-left line-clamp-1'>{post.body}</p> */}
           <div className="flex justify-start">
             <p className='text-[0.75rem]'>Pubblicato da: <Link to={`/user/${post.userId}`}><span className='text-red-600 cursor-pointer'>{getUserName(post.userId)}</span></Link></p>
           </div>
