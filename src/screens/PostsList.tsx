@@ -51,11 +51,13 @@ export const PostsList = () => {
             ))}
           </select>
         </div>
-        <div className="flex gap-2">
-          <label htmlFor="users">Scegli colore primario:</label>
-          <div className="w-5 h-5 bg-red-600 cursor-pointer rounded" onClick={() => handlePrimaryColorChange('bg-red-600')}></div>
-          <div className="w-5 h-5 bg-blue-600 cursor-pointer rounded" onClick={() => handlePrimaryColorChange('bg-blue-600')}></div>
-          <div className="w-5 h-5 bg-green-600 cursor-pointer rounded" onClick={() => handlePrimaryColorChange('bg-green-600')}></div>
+        <div className="flex flex-wrap gap-2">
+          <label htmlFor="users">Colore primario:</label>
+          <div className="flex gap-2">
+            <div className="w-5 h-5 bg-red-600 cursor-pointer rounded" onClick={() => handlePrimaryColorChange('bg-red-600')}></div>
+            <div className="w-5 h-5 bg-blue-600 cursor-pointer rounded" onClick={() => handlePrimaryColorChange('bg-blue-600')}></div>
+            <div className="w-5 h-5 bg-green-600 cursor-pointer rounded" onClick={() => handlePrimaryColorChange('bg-green-600')}></div>
+          </div>
         </div>
       </div>
       <div className='flex flex-wrap p-2'>
