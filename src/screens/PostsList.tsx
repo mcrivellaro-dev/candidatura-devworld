@@ -9,7 +9,8 @@ import { Header } from "../components/Header";
 export const PostsList = () => {
   const [posts, setPosts] = useState<Post[]>([])
   const [users, setUsers] = useState<User[]>([])
-  const [selectedPost, setSelectedPost] = useState<Post | null>(null)
+  const [selectedUser, setSelectedUser] = useState<number | null>(null)
+  // const [selectedPost, setSelectedPost] = useState<Post | null>(null)
 
 
   useEffect(() => {
@@ -42,6 +43,15 @@ export const PostsList = () => {
     }
   }
 
+  const handleSelectedUserChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const userId = parseInt(event.target.value)
+    if (userId === 0) {
+      setSelectedUser(null)
+    } else {
+      setSelectedUser(userId)
+    }
+  }
+
   return (
     <>
       {/* {selectedPost && <div className='w-full border rounded-xl p-2 mb-4'>
@@ -54,27 +64,43 @@ export const PostsList = () => {
         </div>
       </div>} */}
       <Header title="Elenco Post" />
+      <div className="flex w-full p-4 justify-start gap-2">
+        <label htmlFor="users">Scegli utente:</label>
 
+        <select name="users" id="users" className="border" onChange={handleSelectedUserChange}>
+          <option value={0}>Tutti</option>
+          {users.map((user) => (
+            <option key={user.id} value={user.id}>{user.username}</option>
+          ))}
+        </select>
+      </div>
       <div className='flex flex-wrap p-2'>
-        {posts.map((post: Post) => (
-          <div key={post.id} className='max-w-[48%]'>
-            <div className='flex flex-row gap-2'>
-              <div className='flex items-center justify-center pl-1.5'>
-                <Link className='flex w-12.5 h-12.5 bg-red-600 rounded-xl justify-center items-center cursor-pointer' to={`/post/${post.id}`}>
-                  <div className='text-2xl font-semibold text-white'>{getUserInitials(post.userId)}</div>
-                </Link>
-              </div>
-              <div className="flex flex-col justify-start">
-                <h3 className="text-[2rem] text-left leading-none mb-1.5 line-clamp-1" key={post.id}>{post.title}</h3>
-                <p className='text-[1rem] text-left line-clamp-2'>{post.body}</p>
-                <div className="flex justify-start">
-                  <p className='text-[0.75rem]'>Pubblicato da: <Link to={`/user/${post.userId}`}><span className='text-red-600 cursor-pointer'>{getUserName(post.userId)}</span></Link></p>
+        {posts
+          .filter((post: Post) => {
+            if (selectedUser) {
+              return post.userId === selectedUser
+            }
+            return true
+          })
+          .map((post: Post) => (
+            <div key={post.id} className='max-w-[48%]'>
+              <div className='flex flex-row gap-2'>
+                <div className='flex items-center justify-center pl-1.5'>
+                  <Link className='flex w-12.5 h-12.5 bg-red-600 rounded-xl justify-center items-center cursor-pointer' to={`/post/${post.id}`}>
+                    <div className='text-2xl font-semibold text-white'>{getUserInitials(post.userId)}</div>
+                  </Link>
+                </div>
+                <div className="flex flex-col justify-start">
+                  <h3 className="text-[2rem] text-left leading-none mb-1.5 line-clamp-1" key={post.id}>{post.title}</h3>
+                  <p className='text-[1rem] text-left line-clamp-2'>{post.body}</p>
+                  <div className="flex justify-start">
+                    <p className='text-[0.75rem]'>Pubblicato da: <Link to={`/user/${post.userId}`}><span className='text-red-600 cursor-pointer'>{getUserName(post.userId)}</span></Link></p>
+                  </div>
                 </div>
               </div>
+              {<hr className="h-px my-4 bg-[#eeeeee] border-0"></hr>}
             </div>
-            {<hr className="h-px my-4 bg-[#eeeeee] border-0"></hr>}
-          </div>
-        ))}
+          ))}
       </div>
     </>
 

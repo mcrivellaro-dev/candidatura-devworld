@@ -56,7 +56,7 @@ export const UserDetails = () => {
             </tbody>
           </table>
           <div className='flex justify-end mt-4'>
-            <button onClick={() => navigate('/')}>Indietro</button>
+            <button onClick={() => navigate(-1)}>Indietro</button>
           </div>
         </div>
       </div>

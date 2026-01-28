@@ -45,14 +45,14 @@ export const PostDetails = () => {
       <Header title="Dettaglio Post" />
 
       <div className="flex justify-center p-2">
-        <div className='w-[70%] border rounded-xl p-2 mb-4'>
+        <div className='w-[60%] border rounded-xl p-2 mb-4'>
           {post && <>
             <p className='text-left text-[0.75rem]'>Post pubblicato da: {getUser(post.userId)} alias
               <Link to={`/user/${post.userId}`}><span className='text-red-600 cursor-pointer'> {getUserName(post.userId)}</span></Link></p>
             <p className="text-[2rem] text-left leading-none mb-1.5">{post.title}</p>
             <p className='text-[1rem] text-left line-clamp-2'>{post.body}</p>
             <div className='flex justify-end mt-4'>
-              <button onClick={() => navigate('/')}>Indietro</button>
+              <button onClick={() => navigate(-1)}>Indietro</button>
             </div>
           </>}
 
