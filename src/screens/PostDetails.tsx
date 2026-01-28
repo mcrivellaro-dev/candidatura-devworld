@@ -48,7 +48,7 @@ export const PostDetails = () => {
       <Header title="Dettaglio Post" />
 
       <div className="flex justify-center p-2">
-        <div className='w-[60%] border rounded-xl p-2 mb-4'>
+        <div className='md:w-[60%] border rounded-xl p-2 mb-4'>
           {post && <>
             <p className='text-left text-[0.75rem]'>Post pubblicato da: {getUser(post.userId)} alias
               <Link to={`/user/${post.userId}`}><span className={`${theme?.textPrimaryColor ?? "text-red-600"} cursor-pointer`}> {getUserName(post.userId)}</span></Link></p>

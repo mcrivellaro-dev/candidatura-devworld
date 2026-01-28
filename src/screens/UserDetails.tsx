@@ -21,11 +21,11 @@ export const UserDetails = () => {
     <div>
       <Header title="Dettaglio Utente" />
       <div className="flex justify-center p-2">
-        <div className="flex flex-col border rounded-xl p-3 justify-start w-[50%]">
+        <div className="flex flex-col border rounded-xl p-3 justify-start md:w-[60%]">
           <table>
             <tbody>
               <tr>
-                <td><p className="w-0.5">Nome:</p></td>
+                <td><p className="w-full">Nome:</p></td>
                 <td><span className="font-bold text-right">{user?.name}</span></td>
               </tr>
               <tr>
