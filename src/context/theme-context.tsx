@@ -3,8 +3,8 @@ import { createContext, useState, type ReactElement, type ReactNode } from "reac
 type ThemeContextType = {
   primaryColor: string;
   textPrimaryColor: string;
-  setTextPrimaryColor: any;
-  setPrimaryColor: any;
+  setTextPrimaryColor: (color: string) => void;
+  setPrimaryColor: (color: string) => void;
 };
 
 export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
