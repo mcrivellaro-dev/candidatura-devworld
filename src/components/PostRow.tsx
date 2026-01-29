@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import type { Post } from "../interfaces/post.interface";
 import type { User } from "../interfaces/user.interface";
-import { useContext, useMemo } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../context/theme-context";
 
 interface Props {
@@ -32,9 +32,6 @@ export const PostRow = ({ post, users }: Props) => {
       return ''
     }
   }
-
-  // const userInitials = useMemo(() => getUserInitials(), [post.userId, users]);
-  // const userName = useMemo(() => getUserName(), [post.userId, users]);
 
   return (
     <div key={post.id} className='md:w-[48%] w-full'>
